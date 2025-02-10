@@ -1,0 +1,80 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+import java.util.HashMap;
+
+public class Main {
+static Scanner input = new Scanner(System.in);
+    static ArrayList<String> cname = new ArrayList <String>();//for city names
+    static ArrayList<Double> temps = new ArrayList <Double>();//for 5 daily temps
+  
+    HashMap<String, Double> cityTemp = new HashMap<String, Double>();
+  
+  public static void main(String[] args) {
+    getUserinfo();
+    getTemps();
+    getAvg();
+    }
+
+  
+
+
+ static public String getUserinfo(){
+
+   
+   boolean end = false;
+   while(end == false){
+     System.out.println("Which cities do you want to add?");
+     String fcities = input.nextLine();
+
+     cname.add(fcities);
+  
+     
+     if(fcities.equals("END")){
+       end = true;
+      }
+   
+   
+   }
+ return " ";}
+
+static public double getTemps(){
+  int index = 0;
+  for (String city : cname) {
+      if (index < cname.size() - 1) {
+          System.out.println(city);
+        for(int i = 0; i < 5; i++){
+           System.out.println("What are the 5 daily temps for " + city + "?");
+          Double aput = input.nextDouble();
+          temps.add(aput);
+          
+
+        }
+
+      }
+      index++;}
+  return 0.0;
+}
+
+  
+  
+static public double getAvg(){
+  for (int i = 0; i < temps.size(); i += 5) {
+    double sum = 0;
+    
+    for (int k = i; k <i + 5; k++) {
+      
+      sum += temps.get(k);
+      
+    }
+    double avg = sum / 5;
+    System.out.println("The average temp for " + cname.get(i / 5) + " is " + avg);
+  }
+  return 0.0;
+}
+  
+  
+
+ 
+
+  
+}
